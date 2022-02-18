@@ -1,0 +1,144 @@
+<div class="page-wrapper">
+    <div class="page-breadcrumb bg-white">
+        <div class="row align-items-center">
+            <div class="col-lg">
+                <h4 class="page-title">Claim Count</h4>
+            </div>
+            <div class="col-lg">
+                <div class="d-md-flex">
+                    <ol class="breadcrumb ms-auto">
+                        <li><a href="#" class="fw-normal">Export Current Result</a></li>
+                    </ol>
+                    <a href="#" target="_blank" style="cursor: pointer" (click)="exportexcel()"
+                        class="btn btn-danger  d-none d-md-block pull-right ms-3 hidden-xs hidden-sm waves-effect waves-light text-white">Export</a>
+                </div>
+            </div>
+        </div> 
+    </div>
+    
+    <div class="container-fluid">
+         
+        <div class="row justify-content-center">
+          <div class="col-sm">
+                <div class="white-box analytics-info">
+                    <h3 class="box-title">Total Abacus Claims</h3>
+                    <ul class="list-inline two-part d-flex align-items-center mb-0">
+                        <li>
+                            <div id="sparklinedash"><canvas width="67" height="30"
+                                    style="display: inline-block; width: 67px; height: 30px; vertical-align: top;"></canvas>
+                            </div>
+                        </li>
+                        <li class="ms-auto"><span class="counter text-success">{{myTotalClaims.abacus_total_claims}}</span></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm">
+                <div class="white-box analytics-info">
+                    <h3 class="box-title">Total Integ Claims</h3>
+                    <ul class="list-inline two-part d-flex align-items-center mb-0">
+                        <li>
+                            <div id="sparklinedash2"><canvas width="67" height="30"
+                                    style="display: inline-block; width: 67px; height: 30px; vertical-align: top;"></canvas>
+                            </div>
+                        </li>
+                        <li class="ms-auto"><span class="counter text-purple">{{myTotalClaims.intergrations_total_claims}}</span></li>
+                    </ul>
+                </div>
+            </div>
+             
+        </div>
+       
+        <div class="row">
+            <div class="col-md-12 col-lg-12 col-sm-12">
+                <div class="white-box">
+                    <div class="d-md-flex mb-3">
+                        <h3 class="box-title">Clients</h3>
+                        <div class="col-md-7 col-sm-6 col-xs-6 ms-auto">
+                          <form  #addForm="ngForm" (ngSubmit)="getDynamicClaims(addForm)"  >
+                            <DIv class="row">
+                                
+
+                             
+                              <div class="col">
+                                  <select class="form-select shadow-none row border-top">
+                                      <option>Version 0</option>
+                                      <option>Version 1</option>
+                                      <option>Version 2</option>
+                                      <option>Version 3</option>
+                                  </select>
+                              </div>
+                              <div class="col">
+                                  <select class="form-select shadow-none row border-top" ngModel name="client">
+                                      <option value="UAP">UAP</option>
+                                     
+                                  </select>
+                              </div>
+                                <div class="col">
+                                    <select class="form-select shadow-none row border-top" ngModel name="date">
+
+                                        <option value="30">Last 30 days</option>
+                                        <option value="60" >Last 60 days</option>
+                                        <option value="90" >Last 90 days</option>
+
+                                        
+                                    </select>
+                                </div>
+                               
+                                <div class="col">
+                                  <button class="btn btn-danger"  [disabled]="addForm.invalid" type="submit" style="color: white;">Generate</button>
+                              </div>
+                       
+                            </DIv>
+                          </form>
+                            
+
+                            
+                            
+                        </div>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table no-wrap" id="excel-table">
+                            <thead>
+                                <tr>
+                                    <th class="border-top-0">FIN_TOTAL</th>
+                                    <th>FIN_TOTAL_SUM</th>
+                                   
+                                    <th class="border-top-0">INTEG_TOTAL_NORMAL</th>
+                                    <th>INTEG_TOTAL_NORMAL_CLAIMS_SUM</th>
+                                    <th class="border-top-0">INTEG_TOTAL_OFF_SMART</th>
+                                    <th>INTEG_TOTAL_OFF_SMART_SUM</th>
+                                    <th>STG_TOTAL_NORMAL</th>
+                                    <th>STG_TOTAL_NORMAL_SUM</th>
+                                </tr>
+                            </thead>
+                            <tbody   >
+                                <tr>
+                                
+                                    <td><span class="text-success">{{resultClaims.fin_total_claims}}</span></td>
+                                    <td>{{resultClaims.fin_total_claims_sum}}</td>
+                                    <td><span class="text-oflo">{{resultClaims.integ_total_normal_claims}}</span></td>
+                                    <td>{{resultClaims.integ_total_normal_claims_sum}}</td>
+                                    <td><span class="text-info">{{resultClaims.integ_total_off_smart_claims}}</span></td>
+                                    <td>{{resultClaims.integ_total_off_smart_claims_sum}}</td>
+                                    <td>{{resultClaims.stg_uap_total_normal_claims}}</td>
+                                    <td>{{resultClaims.stg_uap_total_normal_claims_sum}}</td>
+
+
+                                </tr>
+                               
+                                
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+      
+       
+    </div>
+    
+    <footer class="footer text-center"> Smart Applications
+    </footer>
+    
+</div>

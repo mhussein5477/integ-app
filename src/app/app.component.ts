@@ -3,8 +3,13 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['../bootstrap/css/style.min.css']
 })
 export class AppComponent {
-  title = 'integ-app';
+  
+  myImage :string = "assets/images/smart_logo.jpg";
+  alertRoute =  "alert";
+  mappingRoute = "mapping";
+  claimcountRoute = "claimcount";
+
 }
